@@ -20,7 +20,7 @@ To install a single theme instead, share its link or its file to Backtalk.
 
 ### VoiceOver
 
-36 sounds and 14 vibrations, taken from `VoiceOverTouch.app` in iOS 18.6.2. Each
+35 sounds and 14 vibrations, taken from `VoiceOverTouch.app` in iOS 18.6.2. Each
 sound is one of Apple's AIFF files rewritten as WAV, sample for sample, at
 22.05 kHz, 16-bit, stereo. The vibrations were derived from Apple's `.ahap`
 haptic patterns in the same app: Apple's intensity became Backtalk's strength,
@@ -29,11 +29,18 @@ and Apple's sharpness chose the haptic primitive.
 As on iOS, gestures play no sound and controls have no sounds of their own, so
 Backtalk still says what kind of control each one is.
 
-The theme's own `README.md` lists which Apple sound stands in for each Backtalk
-sound, so you can replace any of them under **Sounds** in the theme's settings.
-Nine have no counterpart in VoiceOver and are the nearest thing Apple ships
-rather than an exact match: `tick`, `long_clicked`, `complete`, `typo`,
-`formatting`, the two direct touch sounds and the two browse mode sounds.
+Which file goes with which event is taken from VoiceOver itself, not guessed:
+VoiceOver keeps the table in `-[VOSDefaultSoundPack eventToSoundFilenameMapping]`
+inside `VoiceOverServices`, and it was read out of that binary. So swiping left
+or right plays `ElementBorder.aiff`, the sound of `DidFocusOnElement`, rather
+than `Focus.aiff`, which VoiceOver keeps for syncing its cursor with system
+focus.
+
+The theme's own `README.md` lists the Apple sound and the VoiceOver event behind
+each Backtalk sound, so you can replace any of them under **Sounds** in the
+theme's settings. Eight have no matching event in VoiceOver and are the nearest
+thing Apple ships instead: `typo`, `hyperlink`, `formatting`, `radial_menu`, the
+two braille display sounds and the two braille auto scroll sounds.
 
 The sounds and haptic patterns are the work of Apple Inc., Copyright (c)
 2009-2025 Apple Inc. All rights reserved. They are not licensed for
